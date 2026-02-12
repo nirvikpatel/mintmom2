@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MintMom - Written Proposal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: #f8faf8;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        h1 {
+            color: #2d8659;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            color: #636e72;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #2d8659;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 0.3rem;
+        }
+        h3 {
+            color: #388e3c;
+            font-size: 1.05rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        p, li { font-size: 0.95rem; margin-bottom: 0.6rem; }
+        ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2d8659;
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        .highlight-box p { margin-bottom: 0; }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .stat-card {
+            background: #f1f8e9;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2d8659;
+        }
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: #636e72;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background: #e8f5e9;
+            color: #2d8659;
+            font-weight: 600;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .badge-free { background: #e8f5e9; color: #2d8659; }
+        .badge-premium { background: #fff3e0; color: #e65100; }
+        a { color: #2d8659; }
+        .footer {
+            color: #b2bec3;
+            font-size: 0.85rem;
+            margin-top: 2.5rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 MintMom — Written Proposal</h1>
+        <p class="subtitle">Daily Financial Companion for Moms · Built for Rebecca Louise's Creator Brief</p>
+
+        <h2>1. The Problem</h2>
+        <p>Mothers aged 25–45 are the primary financial decision-makers in most households. They control everyday spending on groceries, utilities, children's needs, and home maintenance. Yet most financial apps are built for a different user — someone with time to track every transaction, read market reports, or manage complex budgets.</p>
+
+        <p>The result is a confidence gap. Research consistently shows that women report lower financial confidence than men, not because they lack ability, but because existing tools don't speak their language or fit their schedule.</p>
+
+        <div class="highlight-box">
+            <p>Rebecca Louise's brief captures this perfectly: her audience wants <strong>practical, actionable help with money — fast</strong>. They need everyday money-saving guidance alongside an approachable way to learn investing basics.</p>
+        </div>
+
+        <p>The core pain points we address:</p>
+        <ul>
+            <li>No time for complex budgeting — moms have 30 seconds between tasks, not 30 minutes</li>
+            <li>Financial jargon is intimidating — terms like "dollar-cost averaging" shut people out</li>
+            <li>Shame-based finance culture — most apps use red alerts and negative framing</li>
+            <li>No clear path from "saving a few dollars" to "actually investing" — the gap feels enormous</li>
+            <li>Generic advice that ignores local context — a tip about 401(k)s is useless for a mom in the UK</li>
+        </ul>
+
+        <h2>2. Target Audience</h2>
+        <p>MintMom is built specifically for Rebecca Louise's community:</p>
+
+        <ul>
+            <li><strong>Demographics:</strong> Mothers aged 25–45, household decision-makers</li>
+            <li><strong>Psychographics:</strong> Time-poor but motivation-rich. They want to do better with money but don't know where to start</li>
+            <li><strong>Behavior:</strong> They check their phone in short bursts — between school drop-off, during lunch, before bed. They respond to encouragement, not guilt</li>
+            <li><strong>Financial stage:</strong> Beginners to intermediate. Some are saving for the first time; others want to learn investing but find it intimidating</li>
+            <li><strong>Geography:</strong> Global — MintMom supports 10+ countries with localized currency, brands, and financial regulations (US 401k, UK ISA, India SIP, etc.)</li>
+        </ul>
+
+        <h2>3. Our Solution — MintMom</h2>
+        <p>MintMom is a "Daily Financial Companion for Moms" — an Android app that builds financial confidence through daily micro-wins rather than complex tracking.</p>
+
+        <p>The core philosophy: <strong>"Spend smarter today, grow wealth quietly in the background."</strong></p>
+
+        <h3>Feature Overview</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>What It Does</th>
+                    <th>Time Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Today's Money Win</td>
+                    <td>One actionable money-saving tip per day with estimated savings</td>
+                    <td>Under 30 seconds</td>
+                </tr>
+                <tr>
+                    <td>Smart Grocery Mode</td>
+                    <td>Scan or type your grocery list → get brand-level swap suggestions with monthly savings</td>
+                    <td>2–3 minutes</td>
+                </tr>
+                <tr>
+                    <td>Home ROI Tips</td>
+                    <td>Home improvement suggestions with upfront cost, yearly savings, and payback period</td>
+                    <td>1–2 minutes</td>
+                </tr>
+                <tr>
+                    <td>Silent Investing</td>
+                    <td>10 jargon-free investment lessons using stories and analogies</td>
+                    <td>3–5 min per lesson</td>
+                </tr>
+                <tr>
+                    <td>AI Coach</td>
+                    <td>Conversational financial advisor powered by Gemini AI, scoped to personal finance</td>
+                    <td>As needed</td>
+                </tr>
+                <tr>
+                    <td>Progress Tracking</td>
+                    <td>Running savings total, daily streaks, milestone celebrations, achievement badges</td>
+                    <td>Passive</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Content at a Glance</h3>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="number">35</div>
+                <div class="label">Daily Money Wins</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">25</div>
+                <div class="label">Grocery Swaps</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">18</div>
+                <div class="label">Home ROI Tips</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">10</div>
+                <div class="label">Investment Lessons</div>
+            </div>
+        </div>
+
+        <h3>How It Aligns with Rebecca's Brief</h3>
+        <p>Rebecca asked for: <em>"an app that offers everyday money-saving guidance (shopping, cooking, home costs) alongside an approachable way to learn investing basics and grow what users already have."</em></p>
+
+        <ul>
+            <li>✅ <strong>Everyday money-saving guidance</strong> → Today's Money Win (daily tips covering groceries, utilities, transport, batch cooking, subscriptions)</li>
+            <li>✅ <strong>Shopping</strong> → Smart Grocery Mode with brand-level swaps and camera scanning</li>
+            <li>✅ <strong>Cooking</strong> → Batch cooking tips, meal planning wins, homemade alternatives</li>
+            <li>✅ <strong>Home costs</strong> → Home ROI Tips with cost/savings/payback calculations</li>
+            <li>✅ <strong>Approachable investing</strong> → Silent Investing lessons using stories ("investing is like planting a seed")</li>
+            <li>✅ <strong>Grow what users already have</strong> → AI Coach for personalized financial guidance</li>
+        </ul>
+
+        <h2>4. Monetization Strategy</h2>
+        <p>MintMom uses a freemium model powered by RevenueCat SDK, designed to deliver real value at every tier.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Free Tier</th>
+                    <th>Premium Tier</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Today's Money Win</td>
+                    <td><span class="badge badge-free">✓ Full access</span></td>
+                    <td><span class="badge badge-premium">+ AI personalized</span></td>
+                </tr>
+                <tr>
+                    <td>Grocery Swaps</td>
+                    <td><span class="badge badge-free">15 basic swaps</span></td>
+                    <td><span class="badge badge-premium">All 25 + AI personalized</span></td>
+                </tr>
+                <tr>
+                    <td>Home ROI Tips</td>
+                    <td><span class="badge badge-free">10 basic tips</span></td>
+                    <td><span class="badge badge-premium">All 18 + AI localized</span></td>
+                </tr>
+                <tr>
+                    <td>Investment Lessons</td>
+                    <td><span class="badge badge-free">3 lessons</span></td>
+                    <td><span class="badge badge-premium">Full 10-lesson path</span></td>
+                </tr>
+                <tr>
+                    <td>AI Coach</td>
+                    <td><span class="badge badge-free">3 questions/week</span></td>
+                    <td><span class="badge badge-premium">Unlimited</span></td>
+                </tr>
+                <tr>
+                    <td>Progress Tracking</td>
+                    <td><span class="badge badge-free">✓ Full access</span></td>
+                    <td><span class="badge badge-premium">✓ Full access</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Why This Model Works</h3>
+        <ul>
+            <li><strong>Generous free tier builds trust:</strong> Users get real value immediately — daily tips, basic swaps, 3 investment lessons, and progress tracking. No paywall on day one.</li>
+            <li><strong>Natural upgrade triggers:</strong> When a free user taps a locked premium swap or tries to access lesson 4, they see exactly what they're missing. The value is demonstrated before the ask.</li>
+            <li><strong>7-day free trial:</strong> Lowers the barrier to trying premium. Users experience AI personalization and the full investment path before committing.</li>
+            <li><strong>AI Coach as retention driver:</strong> The conversational coach creates ongoing engagement. Free users get a taste (3 questions/week), premium users get unlimited access — creating a habit loop.</li>
+            <li><strong>RevenueCat handles complexity:</strong> Subscription status, trial management, restore purchases, and grace periods are all managed through RevenueCat SDK, ensuring a smooth purchase experience.</li>
+        </ul>
+
+        <h3>Pricing</h3>
+        <p>Premium subscription offered as monthly and annual plans through Google Play, managed entirely by RevenueCat. Annual plan offers a discount to encourage longer commitment and reduce churn.</p>
+
+        <h2>5. UX Philosophy</h2>
+        <p>Every design decision in MintMom follows one principle: <strong>never make a mom feel bad about money.</strong></p>
+        <ul>
+            <li>Friendly, supportive tone — encouragement messages adapt to the user's progress</li>
+            <li>No red alert colors for financial information — calming mint greens and soft neutrals</li>
+            <li>Celebrate small wins with emoji, haptic feedback, and milestone dialogs</li>
+            <li>Minimize taps — one tap to mark a win as done, one tap to use a swap</li>
+            <li>Under 30 seconds for the core daily interaction</li>
+            <li>Dark mode support for late-night browsing</li>
+        </ul>
+
+        <h2>6. What's Next</h2>
+        <ul>
+            <li>Home screen widget for the daily money win</li>
+            <li>Family savings goals with kid-friendly progress visualization</li>
+            <li>Community feature for moms to share their wins</li>
+            <li>iOS version to reach Rebecca's full audience</li>
+            <li>Notification reminders tuned to the user's preferred time</li>
+        </ul>
+
+        <div class="footer">
+            MintMom · Nova Bloom Studios · Built for Rebecca Louise's Creator Brief · Shipyard 2026
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MintMom - Technical Documentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: #f8faf8;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        h1 {
+            color: #2d8659;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            color: #636e72;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #2d8659;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 0.3rem;
+        }
+        h3 {
+            color: #388e3c;
+            font-size: 1.05rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        p, li { font-size: 0.95rem; margin-bottom: 0.6rem; }
+        ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+        code {
+            background: #f1f8e9;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-family: 'Fira Code', 'Consolas', monospace;
+        }
+        pre {
+            background: #263238;
+            color: #eeffee;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0.8rem 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2d8659;
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        .highlight-box p { margin-bottom: 0; }
+        .arch-diagram {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background: #e8f5e9;
+            color: #2d8659;
+            font-weight: 600;
+        }
+        a { color: #2d8659; }
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .badge-green { background: #e8f5e9; color: #2d8659; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .badge-orange { background: #fff3e0; color: #e65100; }
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin: 0.6rem 0;
+        }
+        .flow-num {
+            background: #2d8659;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .flow-content { flex: 1; }
+        .flow-content strong { color: #2d8659; }
+        .footer {
+            color: #b2bec3;
+            font-size: 0.85rem;
+            margin-top: 2.5rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ MintMom — Technical Documentation</h1>
+        <p class="subtitle">Architecture, Tech Stack, and RevenueCat Implementation</p>
+
+        <h2>1. Tech Stack Overview</h2>
+        <table>
+            <thead>
+                <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Platform</td>
+                    <td>Android Native (Java 11)</td>
+                    <td>Min SDK 24 (Android 7.0), Target SDK 36</td>
+                </tr>
+                <tr>
+                    <td>UI Framework</td>
+                    <td>Material Design 3</td>
+                    <td>Modern UI components, theming, dark mode</td>
+                </tr>
+                <tr>
+                    <td>Architecture</td>
+                    <td>MVVM (ViewModel + LiveData)</td>
+                    <td>Lifecycle-aware, reactive UI updates</td>
+                </tr>
+                <tr>
+                    <td>Navigation</td>
+                    <td>AndroidX Navigation Component</td>
+                    <td>Fragment-based navigation with bottom nav</td>
+                </tr>
+                <tr>
+                    <td>View Layer</td>
+                    <td>View Binding</td>
+                    <td>Type-safe view access, null-safe</td>
+                </tr>
+                <tr>
+                    <td>Subscriptions</td>
+                    <td>RevenueCat SDK + Paywall UI</td>
+                    <td>In-app purchases, trial management, status sync</td>
+                </tr>
+                <tr>
+                    <td>AI</td>
+                    <td>Google Gemini API</td>
+                    <td>Personalized tips, grocery swaps, AI coach</td>
+                </tr>
+                <tr>
+                    <td>OCR</td>
+                    <td>Google ML Kit (Text Recognition)</td>
+                    <td>On-device grocery list scanning</td>
+                </tr>
+                <tr>
+                    <td>Networking</td>
+                    <td>OkHttp</td>
+                    <td>HTTP client for Gemini API calls</td>
+                </tr>
+                <tr>
+                    <td>JSON</td>
+                    <td>Gson</td>
+                    <td>Serialization/deserialization of models and assets</td>
+                </tr>
+                <tr>
+                    <td>Loading States</td>
+                    <td>Facebook Shimmer</td>
+                    <td>Skeleton loading animations</td>
+                </tr>
+                <tr>
+                    <td>Storage</td>
+                    <td>SharedPreferences</td>
+                    <td>Local-only data persistence (privacy-first)</td>
+                </tr>
+                <tr>
+                    <td>Build System</td>
+                    <td>Gradle (AGP 8.12.3)</td>
+                    <td>Version catalog, core library desugaring</td>
+                </tr>
+                <tr>
+                    <td>Testing</td>
+                    <td>JUnit 5 + jqwik + Espresso</td>
+                    <td>Unit, property-based, and instrumented tests</td>
+                </tr>
+                <tr>
+                    <td>Dev Tools</td>
+                    <td>Kiro (AI IDE)</td>
+                    <td>AI-assisted development, spec-driven workflow</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Architecture</h2>
+        <p>MintMom follows the MVVM (Model-View-ViewModel) pattern with a Repository layer for data abstraction and interface-based design for testability.</p>
+
+        <div class="arch-diagram">┌─────────────────────────────────────────────────────┐
+│                    UI Layer                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │
+│  │  Home    │ │ Grocery  │ │  Learn   │ │ Coach  │ │
+│  │ Fragment │ │ Fragment │ │ Fragment │ │Fragment│ │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └───┬────┘ │
+│       │             │            │            │      │
+│  ┌────▼─────┐ ┌────▼─────┐ ┌────▼─────┐     │      │
+│  │  Home    │ │ Grocery  │ │  Learn   │     │      │
+│  │ViewModel│ │ViewModel │ │ViewModel │     │      │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘     │      │
+└───────┼─────────────┼────────────┼───────────┼──────┘
+        │             │            │           │
+┌───────▼─────────────▼────────────▼───────────▼──────┐
+│                Repository Layer                      │
+│  ┌────────────────┐ ┌──────────────┐ ┌────────────┐ │
+│  │ Content        │ │ User         │ │Subscription│ │
+│  │ Repository     │ │ Repository   │ │ Repository │ │
+│  └───────┬────────┘ └──────┬───────┘ └─────┬──────┘ │
+└──────────┼─────────────────┼───────────────┼────────┘
+           │                 │               │
+┌──────────▼─────────────────▼───────────────▼────────┐
+│                  Data Layer                          │
+│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
+│  │ Content      │ │ Preferences  │ │ RevenueCat   │ │
+│  │ Manager      │ │ Manager      │ │ Manager      │ │
+│  │ (JSON assets)│ │ (SharedPrefs)│ │ (SDK)        │ │
+│  └──────────────┘ └──────────────┘ └──────────────┘ │
+│  ┌──────────────┐ ┌──────────────┐                   │
+│  │ AI Manager   │ │ Gemini AI    │                   │
+│  │ (Interface)  │ │ Service      │                   │
+│  └──────────────┘ └──────────────┘                   │
+└─────────────────────────────────────────────────────┘</div>
+
+        <h3>Key Design Decisions</h3>
+        <ul>
+            <li><strong>Interface-based managers:</strong> Every manager (<code>ContentManager</code>, <code>PreferencesManager</code>, <code>RevenueCatManager</code>, <code>AIManager</code>) has an interface and an <code>Impl</code> class. This enables unit testing with mock implementations.</li>
+            <li><strong>ViewModelFactory pattern:</strong> Each ViewModel receives its dependencies through a factory, avoiding service locators or static singletons in the UI layer.</li>
+            <li><strong>Reactive subscription status:</strong> <code>SubscriptionRepository</code> exposes subscription status as <code>LiveData&lt;SubscriptionStatus&gt;</code>. All ViewModels observe this reactively — when a user upgrades, the UI updates automatically without manual refresh.</li>
+            <li><strong>Adapter-level premium gating:</strong> Instead of filtering premium content at the data layer, we load all content and let the RecyclerView adapter show lock overlays on premium items. This avoids stale subscription status issues during the RevenueCat sync window.</li>
+        </ul>
+
+        <h2>3. Project Structure</h2>
+        <pre><code>com.novabloomstudios.mintmom/
+├── data/
+│   ├── ai/
+│   │   ├── AIManager.java              # AI interface
+│   │   ├── AIManagerImpl.java          # AI implementation
+│   │   ├── GeminiAIService.java        # Gemini API client
+│   │   ├── GroceryListAnalyzer.java    # ML Kit OCR integration
+│   │   ├── PersonalizedWinGenerator.java
+│   │   ├── PersonalizedSwapGenerator.java
+│   │   └── PersonalizedHomeTipGenerator.java
+│   ├── model/
+│   │   ├── UserProfile.java            # User preferences
+│   │   ├── DailyMoneyWin.java          # Daily tip model
+│   │   ├── GrocerySwap.java            # Swap suggestion model
+│   │   ├── HomeROITip.java             # Home tip model
+│   │   ├── InvestmentLesson.java       # Lesson model
+│   │   ├── Achievement.java            # Gamification badges
+│   │   ├── SavingsRecord.java          # Savings tracking
+│   │   ├── StreakData.java             # Streak tracking
+│   │   ├── SubscriptionStatus.java     # Enum: FREE/PREMIUM/TRIAL/EXPIRED
+│   │   ├── CountryConfig.java          # Multi-country support
+│   │   ├── FinancialGoal.java          # Goal enum
+│   │   └── TimeAvailability.java       # Time preference enum
+│   ├── repository/
+│   │   ├── ContentRepository.java      # Content access layer
+│   │   ├── UserRepository.java         # User data access layer
+│   │   └── SubscriptionRepository.java # Subscription access layer
+│   ├── ContentManager[Impl].java       # JSON asset loading
+│   ├── PreferencesManager[Impl].java   # SharedPreferences wrapper
+│   └── RevenueCatManager[Impl].java    # RevenueCat SDK wrapper
+├── ui/
+│   ├── home/          # Today's Money Win screen
+│   ├── grocery/       # Smart Grocery Mode screen
+│   ├── hometips/      # Home ROI Tips screen
+│   ├── learn/         # Silent Investing screen
+│   ├── coach/         # AI Coach screen
+│   ├── profile/       # User profile screen
+│   ├── onboarding/    # 4-step onboarding flow
+│   ├── paywall/       # Premium subscription screen
+│   ├── common/        # Shared dialogs and components
+│   ├── MainActivity.java
+│   └── SplashActivity.java
+├── util/              # Currency formatting, helpers
+└── MintMomApplication.java  # App entry point, RevenueCat init</code></pre>
+
+        <h2>4. RevenueCat Implementation</h2>
+        <p>RevenueCat is the backbone of MintMom's monetization. Here's how it's integrated end-to-end.</p>
+
+        <h3>4.1 Initialization</h3>
+        <p>RevenueCat SDK is initialized in <code>MintMomApplication.onCreate()</code> — the earliest possible point in the app lifecycle. The API key is stored in <code>BuildConfig</code> (injected via <code>gradle.properties</code>, never hardcoded).</p>
+        <pre><code>// MintMomApplication.java
+public void onCreate() {
+    super.onCreate();
+    String apiKey = BuildConfig.REVENUECAT_API_KEY;
+    revenueCatManager = new RevenueCatManagerImpl();
+    revenueCatManager.initialize(this, apiKey);
+}</code></pre>
+
+        <h3>4.2 Subscription Status Flow</h3>
+        <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-content"><strong>App starts</strong> → <code>RevenueCatManagerImpl</code> initializes the SDK and loads cached subscription status from SharedPreferences for instant UI rendering.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-content"><strong>SDK syncs</strong> → RevenueCat fetches the latest <code>CustomerInfo</code> from its servers. The <code>CustomerInfoUpdateHandler</code> fires automatically.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-content"><strong>Status determined</strong> → <code>determineSubscriptionStatus()</code> checks active entitlements and maps to our <code>SubscriptionStatus</code> enum: <code>FREE</code>, <code>PREMIUM</code>, <code>TRIAL</code>, or <code>EXPIRED</code>.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-content"><strong>LiveData updated</strong> → <code>SubscriptionRepository</code> exposes status as <code>LiveData&lt;SubscriptionStatus&gt;</code>. All ViewModels observe this reactively.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">5</div>
+            <div class="flow-content"><strong>UI reacts</strong> → Adapters show/hide lock overlays on premium content. No manual refresh needed.</div>
+        </div>
+
+        <h3>4.3 Purchase Flow</h3>
+        <pre><code>// Triggered from PaywallActivity or UpgradeBottomSheet
+revenueCatManager.purchasePackage(activity, package, new PurchaseCallback() {
+    @Override
+    public void onSuccess(SubscriptionStatus status) {
+        // Status automatically propagates via LiveData
+        // Show PurchaseSuccessDialog
+    }
+
+    @Override
+    public void onError(String message) {
+        // Show user-friendly error message
+    }
+});</code></pre>
+
+        <h3>4.4 Grace Period Handling</h3>
+        <p>After a purchase, there's a brief window where RevenueCat's server hasn't confirmed the transaction. We handle this with a grace period system:</p>
+        <ul>
+            <li>On successful purchase callback, we persist a timestamp via <code>persistPurchaseTimestamp()</code></li>
+            <li><code>isWithinPurchaseGracePeriod()</code> checks if we're within the grace window</li>
+            <li>During the grace period, <code>isPremiumUser()</code> returns <code>true</code> even if the server status hasn't synced yet</li>
+            <li>This prevents the jarring experience of a user paying and still seeing locked content</li>
+        </ul>
+
+        <h3>4.5 Content Gating Strategy</h3>
+        <div class="highlight-box">
+            <p>Premium gating happens at the <strong>adapter level</strong>, not the data layer. All content is loaded regardless of subscription status. The RecyclerView adapter checks <code>isPremium()</code> on each item and shows a lock overlay for premium items when the user is on the free tier. This avoids race conditions where stale subscription status would incorrectly filter out content.</p>
+        </div>
+
+        <h3>4.6 Restore Purchases</h3>
+        <p>Available from the Profile screen and Paywall. Calls <code>revenueCatManager.restorePurchases()</code> which syncs with RevenueCat servers and updates the local subscription status.</p>
+
+        <h3>4.7 Free Tier Limits</h3>
+        <table>
+            <thead>
+                <tr><th>Feature</th><th>Free Limit</th><th>Premium</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Daily Money Wins</td><td>25 free wins (10 premium-only)</td><td>All 35 + AI personalized</td></tr>
+                <tr><td>Grocery Swaps</td><td>15 free swaps</td><td>All 25 + AI personalized</td></tr>
+                <tr><td>Home ROI Tips</td><td>10 free tips</td><td>All 18 + AI localized</td></tr>
+                <tr><td>Investment Lessons</td><td>3 free lessons</td><td>Full 10-lesson path</td></tr>
+                <tr><td>AI Coach</td><td>3 questions/week</td><td>Unlimited</td></tr>
+            </tbody>
+        </table>
+
+        <h2>5. AI Integration (Google Gemini)</h2>
+
+        <h3>5.1 Architecture</h3>
+        <p><code>GeminiAIService</code> communicates with the Gemini API via OkHttp. It's wrapped by <code>AIManager</code> (interface) and <code>AIManagerImpl</code> for testability. All AI calls are asynchronous with callbacks.</p>
+
+        <h3>5.2 Personalization Pipeline</h3>
+        <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div class="flow-content"><strong>User profile data</strong> (country, state, family size, financial goal, time availability) is extracted — no PII is ever sent.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div class="flow-content"><strong>Country-specific context</strong> is injected into the prompt (e.g., "US context: 401(k), IRA, Roth IRA" or "India context: PPF, NPS, SIP").</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div class="flow-content"><strong>Localized currency</strong> is included — the prompt specifies the user's currency code and symbol for accurate savings estimates.</div>
+        </div>
+        <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div class="flow-content"><strong>Gemini generates</strong> personalized content tailored to the user's exact situation.</div>
+        </div>
+
+        <h3>5.3 AI Features</h3>
+        <table>
+            <thead>
+                <tr><th>Feature</th><th>Method</th><th>What It Does</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Personalized Daily Tips</td><td><code>generateDailyTip()</code></td><td>Country-specific, goal-aware money tips</td></tr>
+                <tr><td>Smart Grocery Swaps</td><td><code>generateGrocerySwaps()</code></td><td>Local brand swaps with real prices</td></tr>
+                <tr><td>Localized Home Tips</td><td><code>generateHomeTips()</code></td><td>Region-specific ROI calculations</td></tr>
+                <tr><td>AI Coach</td><td><code>askCoach()</code></td><td>Conversational financial advisor (scoped to finance only)</td></tr>
+                <tr><td>Grocery OCR</td><td><code>extractGroceryItemsFromImage()</code></td><td>Camera scan → text extraction via ML Kit (on-device)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>5.4 AI Coach Scope Control</h3>
+        <p>The AI Coach prompt includes strict scope boundaries. It only responds to personal finance topics (budgeting, saving, investing, insurance, tax). Off-topic questions receive a friendly redirect: <em>"I'm your personal finance buddy! 💛 I'm best at helping with money matters..."</em></p>
+
+        <h2>6. Data &amp; Privacy Architecture</h2>
+
+        <h3>6.1 Local-Only Storage</h3>
+        <p>All user data is stored in Android SharedPreferences and never leaves the device:</p>
+        <ul>
+            <li>User profile (country, family size, goals, time preference)</li>
+            <li>Savings records and running totals</li>
+            <li>Streak data (current streak, longest streak, last active date)</li>
+            <li>Completed lesson IDs</li>
+            <li>Milestone celebration status</li>
+            <li>Onboarding completion flag</li>
+        </ul>
+
+        <h3>6.2 What Goes to the Network</h3>
+        <table>
+            <thead>
+                <tr><th>Service</th><th>Data Sent</th><th>Data NOT Sent</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gemini API</td>
+                    <td>Country, state, family size, financial goal, time preference</td>
+                    <td>Name, email, phone, savings amounts, any PII</td>
+                </tr>
+                <tr>
+                    <td>RevenueCat</td>
+                    <td>Purchase transactions (via Google Play)</td>
+                    <td>Profile data, usage data, any PII</td>
+                </tr>
+                <tr>
+                    <td>ML Kit</td>
+                    <td>Nothing (fully on-device)</td>
+                    <td>Camera images are never uploaded</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>6.3 No Tracking</h3>
+        <p>MintMom uses zero analytics SDKs, zero tracking, zero ads. The only network calls are Gemini API (premium AI features) and RevenueCat (subscription management).</p>
+
+        <h2>7. Multi-Country Support</h2>
+        <p><code>CountryConfig</code> provides localized configuration for 10+ countries:</p>
+        <table>
+            <thead>
+                <tr><th>Country</th><th>Currency</th><th>Financial Context</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>United States</td><td>$ (USD)</td><td>401(k), IRA, Roth IRA, 529 plans, HSA</td></tr>
+                <tr><td>United Kingdom</td><td>£ (GBP)</td><td>ISA, Workplace pensions, SIPP, NS&amp;I</td></tr>
+                <tr><td>India</td><td>₹ (INR)</td><td>PPF, NPS, SIP, ELSS, Sukanya Samriddhi</td></tr>
+                <tr><td>Canada</td><td>$ (CAD)</td><td>RRSP, TFSA, RESP, FHSA</td></tr>
+                <tr><td>Australia</td><td>$ (AUD)</td><td>Superannuation, FHSS</td></tr>
+                <tr><td>+ 5 more</td><td>Local currencies</td><td>Country-specific financial instruments</td></tr>
+            </tbody>
+        </table>
+        <p>The AI prompts dynamically inject the user's country context, ensuring tips reference local brands, stores, regulations, and currency.</p>
+
+        <h2>8. Gamification System</h2>
+        <ul>
+            <li><strong>Streaks:</strong> Consecutive days of app usage tracked via <code>StreakData</code>. Displayed on home and profile screens.</li>
+            <li><strong>Savings milestones:</strong> Celebrations triggered at configurable thresholds with haptic feedback and dialog animations.</li>
+            <li><strong>Achievements:</strong> 5 badges — First Win 🎉, Century Saver 💯, Week Warrior 🔥, Learning Started 📚, Investment Ready 🚀</li>
+            <li><strong>Encouragement messages:</strong> Contextual messages that adapt based on streak length and savings amount. Always positive, never shaming.</li>
+            <li><strong>Investment readiness:</strong> Progress percentage (completed lessons / total lessons) displayed as "You're X% ready to start investing."</li>
+        </ul>
+
+        <h2>9. Testing Strategy</h2>
+        <table>
+            <thead>
+                <tr><th>Type</th><th>Framework</th><th>Coverage</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Unit Tests</td><td>JUnit 5</td><td>ViewModels, Repositories, Models, Managers</td></tr>
+                <tr><td>Property-Based Tests</td><td>jqwik</td><td>Data model invariants, streak logic, savings calculations</td></tr>
+                <tr><td>Instrumented Tests</td><td>Espresso</td><td>UI flows, navigation, onboarding</td></tr>
+            </tbody>
+        </table>
+        <p>Interface-based design enables mock injection for all external dependencies (RevenueCat, Gemini, SharedPreferences) during testing.</p>
+
+        <h2>10. Build &amp; Deploy</h2>
+        <pre><code># Build debug APK
+./gradlew assembleDebug
+
+# Build release bundle (for Play Store)
+./gradlew bundleRelease
+
+# Run all unit tests
+./gradlew test
+
+# Run instrumented tests
+./gradlew connectedAndroidTest</code></pre>
+
+        <p>API keys are injected via <code>gradle.properties</code> (gitignored) and accessed through <code>BuildConfig</code> fields. Release builds use the same mechanism, ensuring keys never appear in source control.</p>
+
+        <div class="footer">
+            MintMom · Nova Bloom Studios · Technical Documentation · Shipyard 2026
+        </div>
+    </div>
+</body>
+</html>
